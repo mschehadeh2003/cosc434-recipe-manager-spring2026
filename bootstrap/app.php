@@ -11,8 +11,10 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
-        //
-        
+        // Register middleware aliases
+        $middleware->alias([
+            'demo.auth' => \App\Http\Middleware\EnsureUserIsLoggedIn::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

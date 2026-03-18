@@ -5,7 +5,11 @@
 @section('content')
 <h3>All Recipes</h3>
 @if ($recipes->isEmpty())
-<p>No recipes yet. <a href="{{ route('recipes.create') }}">Add</a></p>
+<p>No recipes yet. 
+@if(session('logged_in'))
+<a href="{{ route('recipes.create') }}">Add</a>
+@endif
+</p>
 @else
 <table>
     <thead>

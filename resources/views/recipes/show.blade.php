@@ -6,10 +6,12 @@
 <p><strong>Description: </strong> <br>
 {{ $recipe->description }}</p>
 
+@if(session('logged_in'))
 <a href="{{ route('recipes.edit',$recipe)}}">Edit</a> |
 <form action="{{ route('recipes.destroy', $recipe) }}" method="POST">
     @csrf
     @method('DELETE')
     <button type="submit" onclick="return confirm('Delete this recipe?')">Delete</button>
 </form>
+@endif
 @endsection
