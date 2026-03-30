@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Recipe;
+use App\Models\Category;
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
 class RecipeController extends Controller
@@ -87,5 +89,15 @@ class RecipeController extends Controller
         $recipe->delete();
                 return redirect()->route('recipes.index')->with('success', "Recipe deleted");
 
+    }
+
+    /**
+     * Show the API demo page
+     */
+    public function apiDemo()
+    {
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('recipes.api-demo', compact('categories', 'tags'));
     }
 }
